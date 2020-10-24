@@ -1,4 +1,5 @@
 -cp src
+common-java.zmq.reactor.*
 -D analyzer-optimize
 -main Main
 --interp

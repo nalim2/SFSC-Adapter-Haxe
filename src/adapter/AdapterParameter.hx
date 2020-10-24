@@ -1,11 +1,14 @@
 // SebSauer and Matti
+// 
 // import de.unistuttgart.isw.sfsc.commonjava.zmq.reactor.TransportProtocol;
-// TransportProtocol fehlt noch ! Als ToDo
+// import java.util.Objects;
 
+package adapter;
+import common-java.zmq.reactor.*;
 
 class AdapterParameter {
 
-	// TODO: private final TransportProtocol transportProtocol;
+  @:isVar public var transportProtocol(get,null):TransportProtocol;
 	@:isVar public var adapterId(get, null):String;
 	@:isVar public var coreHost(get, null):String;
 	@:isVar public var coreIpcLocation(get, null):String;
@@ -29,14 +32,14 @@ class AdapterParameter {
 	@:isVar public var registryAdapterCommandTopic(get, null):String;
 
 
-	public function new(adapterId:String, // TODO: transportProtocol
+	public function new(adapterId:String, transportProtocol:TransportProtocol,
 		coreHost:String, corePubTcpPort:Int, coreIpcLocation:String, corePubIpcFile:String,
 		controlTimeoutMs:Int, heartbeatSendRateMs:Int, heartbeatDeadlineIncomingMs:Int, registryPollingRateMs:Int, bootstrapCoreTopic:String,
 		handshakeCoreTopic:String, handshakeAdapterTopic:String, heartbeatCoreTopic:String, heartbeatAdapterTopic:String, registryCoreQueryTopic:String,
 		registryCoreCommandTopic:String, registryCoreEventTopic:String, registryAdapterQueryTopic:String, registryAdapterCommandTopic:String) {
 
       this.adapterId = adapterId;
-      //this.transportProtocol = transportProtocol;
+      this.transportProtocol = transportProtocol;
       this.coreHost = coreHost;
       this.corePubTcpPort = corePubTcpPort;
       this.coreIpcLocation = coreIpcLocation;
@@ -133,5 +136,9 @@ class AdapterParameter {
     public function  get_registryAdapterCommandTopic():String {
       return registryAdapterCommandTopic;
     }
+    
+    public function get_transportProtocol():TransportProtocol {
+      return transportProtocol;
+    }
 
-}
+  }
